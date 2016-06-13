@@ -1673,6 +1673,11 @@ mVkL/D8F+LnCPlldbgAAAABJRU5ErkJggg==
 <p><strong>Answer: </strong>
 I chose second graph with a depth of 3. 
 When we add more data - curves converge to a score of ~0.8. More training data, I think, will not improve the model dramatically, so it's not needed.</p>
+<p>Each of the graphs testing scores grow rapidly and stay stable after adding only ~50 data points. Training scores on the other hand decrease with adding more data, but also become stable after adding only ~50 data points, except for graphs with max_depth over 6 (where the model is overfitted).</p>
+<p>First graph with a depth of 1 has a high bias and both training and testing curves converge to a score with very low accuracy. With the addition of more data points the model isn't improving as it is very simple.</p>
+<p>Second graph actually scores considerably well among others. Both curves converge at a score of around ~0.8 and do not improve with more data points after ~150. This graph I've chosen as the best among the results.</p>
+<p>Third graph has an overfitting problem. We are starting to see that variance is considerably high and overall prediction score plateues at a score of ~0.7.</p>
+<p>Last graph has a high training score and a score of around ~0.6 after adding ~50 data points, the model is also overfitted and can't be used correctly.</p>
 
 </div>
 </div>
@@ -2187,7 +2192,7 @@ When we a have a bias error - training and validation curves are drawn together,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-I think, a max depth of 3 will work better than other variations. It has a lower difference between training and validation scores with a pretty high accuracy for both.</p>
+A model with a max_depth of 3 is the best among others, because it is very consistent in scoring on testing and validation data and also having the highest score (R squared) of around 0.8. Other models, especially the first and the last one are useless, as they can't predict data correctly at all (first has a huge bias, last has a huge variance).</p>
 
 </div>
 </div>
@@ -2243,6 +2248,8 @@ GridSearch is a way of systematically working through multiple combinations of p
 <p><strong>Answer: </strong>
 K-fold training technique divides data in equal sized bins to estimate performance of a model.
 K-fold helps GridSearch to evaluate performance of a family of models and it kind of helps us to use all our data for both training and testing.</p>
+<p>The biggest advantage of a K-fold cross-validation is that we can use all our data for testing and training, by doing that we maximize both training (best learning result) and testing (best validation) data.
+If we didn't use CV on data while using GridSearch we can get wrong results, as we wouldn't know the accuracy of the model (which was computed as an average of each iteration in K-Fold CV). So the k-fold CV is computationally expensive, but is great when the number of samples is low.</p>
 
 </div>
 </div>
