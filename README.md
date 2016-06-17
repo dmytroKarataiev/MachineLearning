@@ -2,10 +2,12 @@
 Different Machine Learning exercises from the Udacity Nanodegree
 
 # Projects
-* [Titanic survival Project #0](titanic/)
+* [Titanic survival #0](titanic/)
+* [Boston Housing Prices #1](boston_housing/)
 
 # Examples, tutorials
 * [Different learning examples](learning/)
+* [Naive Bayes Algorithm](learning/nb)
 
 License
 -------
