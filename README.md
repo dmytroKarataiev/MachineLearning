@@ -9,6 +9,10 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Different learning examples](learning/)
 * [Naive Bayes Algorithm](learning/nb)
 
+# Tasks from [Intro to ML course](https://www.udacity.com/course/intro-to-machine-learning--ud120)
+* [Naive Bayes](learning/ud120-projects/naive_bayes)
+* [Support Vector Machine](learning/ud120-projects/svm)
+
 License
 -------
 
