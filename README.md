@@ -13,6 +13,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Naive Bayes](learning/ud120-projects/naive_bayes)
 * [Support Vector Machine](learning/ud120-projects/svm)
 * [Decision Tree Classifier](learning/ud120-projects/decision_tree)
+* [K-Neighbours, Adaboost, Random Forests](learning/ud120-projects/choose_your_own)
 
 License
 -------
