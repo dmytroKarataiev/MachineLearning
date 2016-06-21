@@ -14,6 +14,8 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Support Vector Machine](learning/ud120-projects/svm)
 * [Decision Tree Classifier](learning/ud120-projects/decision_tree)
 * [K-Neighbours, Adaboost, Random Forests](learning/ud120-projects/choose_your_own)
+* [Exploring Enron Data](learning/ud120-projects/datasets_questions)
+* [Counting emails from txt](learning/ud120-projects/final_project/poi_names.py)
 
 License
 -------
