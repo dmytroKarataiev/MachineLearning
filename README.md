@@ -6,9 +6,12 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Boston Housing Prices #1](boston_housing/)
 
 # Examples, tutorials
-* [Different learning examples](learning/)
-* [Naive Bayes Algorithm](learning/nb)
-* [Regressions](learning/regression)
+* [Different learning examples](learning/algorithms)
+* [Naive Bayes Algorithm](learning/algorithms/nb)
+* [Support Vector Machine](learning/algorithms/svm)
+* [Decision Tree](learning/algorithms/dtree)
+* [Regressions](learning/algorithms/regression)
+* [Perceptron](learning/algorithms/perceptron)
 
 # Tasks from [Intro to ML course](https://www.udacity.com/course/intro-to-machine-learning--ud120)
 * [Naive Bayes](learning/ud120-projects/naive_bayes)
