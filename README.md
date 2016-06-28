@@ -4,6 +4,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 # Projects
 * [Titanic survival #0](titanic/)
 * [Boston Housing Prices #1](boston_housing/)
+* [Student Intervention System #2](student_intervention/)
 
 # Examples, tutorials
 * [Different learning examples](learning/algorithms)

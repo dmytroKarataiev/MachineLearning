@@ -58,6 +58,7 @@ class Sigmoid:
             sigmoid = self.activate(values)
             result = sigmoid*(1.0-sigmoid)
             self.weights[i] += eta*(train[0] - result)*values[i]
+
             print self.weights
 
     def __init__(self,weights=None):
