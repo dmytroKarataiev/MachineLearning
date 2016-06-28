@@ -24,10 +24,7 @@ class Sigmoid:
 
         #First calculate the strength with which the perceptron fires
         strength = self.strength(values)
-        #self.last_input = strength
 
-
-        #YOUR CODE HERE
         #modify strength using the sigmoid activation function
         result = 1/(1.0 + np.exp(-strength))
 
@@ -35,7 +32,6 @@ class Sigmoid:
 
     def strength(self,values):
         strength = np.dot(values,self.weights)
-        print "Strength:", strength, values, self.weights
         return strength
 
     def update(self,values,train,eta=.1):
@@ -46,20 +42,15 @@ class Sigmoid:
         By modifying the weights according to the gradient descent rule
         '''
 
-        #YOUR CODE HERE
         #modify the perceptron training rule to a gradient descent
         #training rule you will need to use the derivative of the
         #logistic function evaluated at the last input value.
         #Recall: d/dx logistic(x) = logistic(x)*(1-logistic(x))
-        #sigmoid = self.activate(values)
-        #result = sigmoid*(1.0-sigmoid)
-        #print "Res:", result
-        for i in range(0,len(values)):
-            sigmoid = self.activate(values)
-            result = sigmoid*(1.0-sigmoid)
-            self.weights[i] += eta*(train[0] - result)*values[i]
+        sigmoid = self.activate(values)
+        result = sigmoid*(1.0-sigmoid)
 
-            print self.weights
+        for i in range(0,len(values)):
+            self.weights[i] += eta*(train[0] - sigmoid)*result*values[i]
 
     def __init__(self,weights=None):
         if weights:
