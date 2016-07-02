@@ -90,7 +90,7 @@ You can also combine multiple selection requirements through boolean
 operators like & (and) or | (or)
 '''
 # Change False to True to see boolean indexing in action
-if False:
+if True:
     data = {'year': [2010, 2011, 2012, 2011, 2012, 2010, 2011, 2012],
             'team': ['Bears', 'Bears', 'Bears', 'Packers', 'Packers', 'Lions',
                      'Lions', 'Lions'],
@@ -104,5 +104,7 @@ if False:
     print football[3:6]
     print ""
     print football[football.wins > 10]
+    print len(football[football.wins > 10])
+
     print ""
     print football[(football.wins > 10) & (football.team == "Packers")]
