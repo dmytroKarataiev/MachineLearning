@@ -21,6 +21,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [K-Neighbours, Adaboost, Random Forests](learning/ud120-projects/choose_your_own)
 * [Exploring Enron Data](learning/ud120-projects/datasets_questions)
 * [Counting emails from txt](learning/ud120-projects/final_project/poi_names.py)
+* [Outliers](learning/ud120-projects/outliers)
 
 License
 -------
