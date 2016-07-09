@@ -23,6 +23,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Exploring Enron Data](learning/ud120-projects/datasets_questions)
 * [Counting emails from txt](learning/ud120-projects/final_project/poi_names.py)
 * [Outliers](learning/ud120-projects/outliers)
+* [K-Means Clustering](learning/ud120-projects/k_means)
 
 License
 -------
