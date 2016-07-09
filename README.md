@@ -13,6 +13,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Decision Tree](learning/algorithms/dtree)
 * [Regressions](learning/algorithms/regression)
 * [Perceptron](learning/algorithms/perceptron)
+* [Feature Scaling](learning/FeatureScaling.py)
 
 # Tasks from [Intro to ML course](https://www.udacity.com/course/intro-to-machine-learning--ud120)
 * [Naive Bayes](learning/ud120-projects/naive_bayes)
