@@ -43,13 +43,13 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### once everything is working, remove this line to run over full dataset
 
         path = os.path.join('..', path[:-1])
-        # print path
+        #print path
         email = open(path, "r")
 
         ### use parseOutText to extract the text from the opened email
         input = parseOutText(email)
 
-        for word in ["sara", "shackleton", "chris", "germani"]:
+        for word in ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]:
             input = input.replace(word, "")
 
         ### use str.replace() to remove any instances of the words
@@ -87,4 +87,4 @@ transfromer = TfidfVectorizer(stop_words='english')
 
 transfromer.fit_transform(word_data)
 
-print len(transfromer.get_feature_names()), transfromer.get_feature_names()[34597]
+print len(transfromer.get_feature_names()), transfromer.vocabulary_.get(34597), transfromer.get_feature_names()[34597]
