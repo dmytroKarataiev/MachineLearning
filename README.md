@@ -5,6 +5,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Titanic survival #0](titanic/)
 * [Boston Housing Prices #1](boston_housing/)
 * [Student Intervention System #2](student_intervention/)
+* [Unsupervised: Creating Customer Segments #3](creating_customer_segments/)
 
 # Examples, tutorials
 * [Different learning examples](learning/algorithms)
@@ -24,6 +25,9 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Counting emails from txt](learning/ud120-projects/final_project/poi_names.py)
 * [Outliers](learning/ud120-projects/outliers)
 * [K-Means Clustering](learning/ud120-projects/k_means)
+* [PCA: Principal Component Analysis](learning/ud120-projects/pca)
+* [Text Vectorizer](learning/ud120-projects/text_learning)
+* [Feature Selection: TF-IDF Vectorizer](learning/ud120-projects/feature_selection)
 
 License
 -------
