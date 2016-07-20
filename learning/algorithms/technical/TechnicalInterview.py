@@ -13,7 +13,7 @@ def question1(s, t):
 
     if len(s) == 0 or len(t) == 0:
         # todo raise ValueError("Strings should be of len > 0")
-        return False
+        return None
 
     frequency = {}
     for letter in s:
@@ -40,16 +40,16 @@ def checkQuestion1():
         print word, question1(s, word)
     print "-------------"
 
-def checkQ2():
+
+def checkQuestion2():
     strings = ["olenaanelo", "dimaamdi", "udacity", "udaudacityytic", "aaabbbbccc"]
     for word in strings:
-        question2(word)
-    #question2("abcdef")
-    print "---"
-    #question2("abccba")
+        print question2(word)
+    print "-------------"
 
 
 # Question 2
+# add biggest
 # Given a string a, find the longest palindromic substring contained in a.
 # Your function definition should look like question2(a), and return a string.
 def question2(a):
@@ -58,38 +58,99 @@ def question2(a):
     :param a: initial string
     :return: longest palindromic substring in a
     """
-    start = end = length = -1
 
-    stringLen = len(a)
+    biggest = (0, "")
 
-    for number in range(stringLen):
-        #print a[number], a[stringLen - number - 1]
-        if (a[number] == a[stringLen - number - 1]):
-            if (end == -1):
-                length = 1
-                end = stringLen - number
-                start = stringLen - number - 1
-            else:
-                start -= 1
-                length += 1
+    for num in range(len(a)):
+        for iter in range(num + 1, len(a)):
+            check = a[num:iter]
+            if len(check) > biggest[0] and isPalindrome(check):
+                biggest = (len(check), check)
 
+    return biggest
+
+
+def isPalindrome(s):
+    """
+    Checks if a string is a palindrome
+    :param s: initial string
+    :return: True if palindrome, False - otherwise
+    """
+    if len(s) < 1:
+        return True
+
+    for num in range(len(s)):
+        if s[num] != s[len(s) - num - 1]:
+            return False
+
+    return True
+
+
+# Question 5
+# Find the element in a singly linked list that's m elements from the end.
+# For example, if a linked list has 5 elements, the 3rd element from the end is the 3rd element.
+# The function definition should look like question5(ll, m), where ll is the first node of a linked list
+# and m is the "mth number from the end". You should copy/paste the Node class below
+# to use as a representation of a node in the linked list. Return the value of the node at that position.
+
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList(object):
+    def __init__(self, head=None):
+        self.head = head
+
+    def append(self, new_element):
+        current = self.head
+        if self.head:
+            while current.next:
+                current = current.next
+            current.next = new_element
         else:
-            start = stringLen - number
-            end = -1
+            self.head = new_element
 
-    print end, length, start
-    if end != -1:
-        substring = a[start:end]
-        out = ""
-        for letter in range(len(substring)):
-            out += substring[len(substring) - letter - 1]
+    def findFromEnd(self, position):
+        nodesList = []
 
-        print out
+        current = self.head
+
+        while current:
+            nodesList.append(current)
+            current = current.next
+
+        if position >= len(nodesList):
+            # todo raise ValueError("Should be smaller than the len of the LL")
+            return None
+
+        return nodesList[-(position + 1)]
+
+
+def checkQuestion3():
+    # Test cases
+    # Set up some Elements
+    ll = LinkedList()
+
+    for node in range(1, 11):
+        ll.append(Node(node))
+
+    cases = [0, 1, 2, 3, 9, 11, 10, 12]
+    for case in cases:
+        out = ll.findFromEnd(case)
+        if out is not None:
+            print "Case:", case, out.data
+
 
 
 def main():
-    #checkQuestion1()
-    checkQ2()
+    try:
+        checkQuestion1()
+        checkQuestion2()
+        checkQuestion3()
+    except ValueError, e:
+        print e
 
 
 if __name__ == '__main__':

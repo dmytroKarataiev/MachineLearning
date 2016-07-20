@@ -1,0 +1,44 @@
+Question 1:
+
+	Data Structure:
+
+	Efficiency:
+	* time:
+	* space:
+---------------------
+
+Question 2:
+
+	Data Structure:
+
+	Efficiency:
+	* time:
+	* space:
+---------------------
+
+Question 3:
+
+	Data Structure:
+
+	Efficiency:
+	* time:
+	* space:
+---------------------
+
+Question 4:
+
+	Data Structure:
+
+	Efficiency:
+	* time:
+	* space:
+---------------------
+
+Question 5:
+
+	Data Structure:
+
+	Efficiency:
+	* time:
+	* space:
+---------------------

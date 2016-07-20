@@ -6,6 +6,7 @@ Different Machine Learning exercises from the Udacity Nanodegree
 * [Boston Housing Prices #1](boston_housing/)
 * [Student Intervention System #2](student_intervention/)
 * [Unsupervised: Creating Customer Segments #3](creating_customer_segments/)
+* [Technical Interview](learning/algorithms/technical/)
 
 # Examples, tutorials
 * [Different learning examples](learning/algorithms)
