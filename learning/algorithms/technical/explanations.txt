@@ -1,44 +1,49 @@
 Question 1:
 
-	Data Structure:
+	Data Structure: used dictionary (hashmap) to calculate the frequency of letters and check in O(1)
+					if letters of t are in s.
 
 	Efficiency:
-	* time:
-	* space:
+	* time: O(n) - length of the input string
+	* space: O(n) - space for dictionary
 ---------------------
 
 Question 2:
 
-	Data Structure:
+	Data Structure: none, not sure how to use data structures here, the task is pretty straightforward,
+					some optimizations: stop checking strings of len < current biggest palindromic substring
 
 	Efficiency:
-	* time:
-	* space:
+	* time: O(n^2) to create all possible substrings
+	* space: O(1) constant amount of space for couple of variables
 ---------------------
 
 Question 3:
 
-	Data Structure:
+	I don't think this is a good question for an interview and I would be surprised if it ever was asked at a normal company.
+	Probably, there is a bruteforce algorithm in something like O(2^n) with which you can come up on the interview.
+
+	Data Structure: dictionary to store MST to be able quickly get them.
 
 	Efficiency:
-	* time:
-	* space:
+	* time: O(edges log edges)
+	* space: O(n) (not sure here)
 ---------------------
 
 Question 4:
 
-	Data Structure:
+	Data Structure: two lists to store parents of nodes
 
 	Efficiency:
-	* time:
-	* space:
+	* time: I think it is in O(log n), but maybe O(n) for some cases (for extremely unbalanced BST)
+	* space: at most O(n) to store parents in rare cases 
 ---------------------
 
 Question 5:
 
-	Data Structure:
+	Data Structure: used list to store full path
 
 	Efficiency:
-	* time:
-	* space:
+	* time: O(n) to traverse whole tree
+	* space: O(n) to store all nodes
 ---------------------
