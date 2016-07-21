@@ -32,6 +32,7 @@ def question1(s, t):
 def checkQuestion1():
     s = "udacity"
     t = ["udatyci", "ud", "du", "ad", "da", "city", "ncity", ""]
+    # answers T, T, T, T, T, T, F, None
 
     print "Is substring of " + s + ": word \\ boolean"
     for word in t:
@@ -77,6 +78,8 @@ def isPalindrome(s):
 
 def checkQuestion2():
     strings = ["olenaanelo", "dimaamdi", "udacity", "udaudacityytic", "aaabbbbccc"]
+    # answers: lenaanel, maam, u, ityyti, bbbb
+
     print "Biggest palindromic substring: word \\ substring"
     for word in strings:
         print word, "\\", question2(word)
@@ -353,13 +356,14 @@ def checkQuestion5():
         ll.append(Element(node))
 
     cases = [0, 1, 2, 3, 9, 11, 10, 12]
+    answers = [10, 9, 8, 7, 1, None, None, None]
     print "Node from the end of a LinkedList: n from end \\ value"
-    for case in cases:
-        out = ll.findFromEnd(case)
+    for case in range(len(cases)):
+        out = ll.findFromEnd(cases[case])
         if isinstance(out, str):
-            print out
+            print out, "Should be:", answers[case]
         else:
-            print "Case:", case, "\\", out.data
+            print "Case:", case, "\\", out.data, "Should be:", answers[case]
 
 
 def main():
