@@ -10,33 +10,27 @@ def question1(s, t):
     :param t: substring of s
     :return: True if t is substring of, False otherwise.
     """
-    if len(s) == 0 or len(t) == 0 or len(t) > len(s):
-        return "Strings should be of len > 0 or t < s"
+    if s == None or t == None or \
+                    len(t) == 0 or len(s) == 0 or len(t) > len(s):
+        # "Strings should be of len > 0 or t < s"
+        return None
 
-    frequency = {}
-    for letter in s:
-        if letter in frequency:
-            frequency[letter] += 1
-        else:
-            frequency[letter] = 1
-
-    for letter in t:
-        if letter in frequency and frequency[letter] > 0:
-            frequency[letter] -= 1
-        else:
-            return False
-
-    return True
+    if t in s:
+        return True
+    else:
+        return False
 
 
 def checkQuestion1():
-    s = "udacity"
-    t = ["udatyci", "ud", "du", "ad", "da", "city", "ncity", ""]
-    # answers T, T, T, T, T, T, F, None
+    s = ["udacity", 'udddda']
+    t = ["udatyci", "ud", "du", "ad", "da", "city", "ncity", "uda", "", None]
+    # answers for s[0]: F, T, F, F, T, T, F, T, None
+    # answers for s[1]: None, T, F, F, T, F, F, F, None
 
-    print "Is substring of " + s + ": word \\ boolean"
-    for word in t:
-        print word + " \\ " + str(question1(s, word))
+    for word in s:
+        print "Is substring of " + word + ": word \\ boolean"
+        for each in t:
+            print str(each) + " \\ " + str(question1(word, each))
 
 
 # Question 2
@@ -49,35 +43,25 @@ def question2(a):
     :param a: initial string
     :return: longest palindromic substring in a
     """
+
+    if a == None:
+        return None
+    elif len(a) < 2:
+        return a
+
     biggest = (0, "")
 
     for num in range(len(a)):
         for iter in range(num + 1, len(a)):
             check = a[num:iter]
-            if len(check) > biggest[0] and isPalindrome(check):
+            if len(check) > biggest[0] and check == check[::-1]:
                 biggest = (len(check), check)
 
     return biggest[1]
 
 
-def isPalindrome(s):
-    """
-    Checks if a string is a palindrome
-    :param s: initial string
-    :return: True if palindrome, False - otherwise
-    """
-    if len(s) < 2:
-        return True
-
-    for num in range(len(s)):
-        if s[num] != s[len(s) - num - 1]:
-            return False
-
-    return True
-
-
 def checkQuestion2():
-    strings = ["olenaanelo", "dimaamdi", "udacity", "udaudacityytic", "aaabbbbccc"]
+    strings = ["olenaanelo", "dimaamdi", "udacity", "udaudacityytic", "aaabbbbccc", "a", "", None]
     # answers: lenaanel, maam, u, ityyti, bbbb
 
     print "Biggest palindromic substring: word \\ substring"
@@ -122,7 +106,7 @@ def union(v1, v2):
             if rank[root1] == rank[root2]: rank[root2] += 1
 
 
-def kruskal(graph):
+def question3(graph):
     for vertices in graph.keys():
         make_set(vertices)
 
@@ -157,7 +141,27 @@ def checkQuestion3():
          'C': [('A', 10), ('B', 5)],
          'D': [('A', 5), ('B', 3)]}
 
-    print "Minimum Spanning Tree:", kruskal(G)
+    # Empty tree
+    G2 = {}
+
+    # Only 2 nodes
+    G3 = {'A': [('B', 2)]}
+
+    # (A) - 5 - (B)
+    #  |  \   /  |
+    #  5    1    5
+    #  | /     \ |
+    # (D) - 5 - (C)
+    # Answer: A - C - B - D
+    G4 = {'A': [('B', 5), ('C', 1), ('D', 5)],
+          'B': [('A', 5), ('C', 5), ('D', 1)],
+          'C': [('A', 1), ('B', 5), ('D', 5)],
+          'D': [('A', 5), ('B', 1), ('C', 5)]}
+
+    trees = [G, G2, G3, G4]
+
+    for tree in trees:
+        print "Minimum Spanning Tree:", question3(tree)
 
 
 # Question 4
@@ -241,7 +245,8 @@ class BST(object):
 
 def question4(tree, root, node1, node2):
     if node1 > len(tree) or node2 > len(tree) or root > len(tree):
-        return "Incorrect input, nodes should be present in the tree"
+        return None
+        # "Incorrect input, nodes should be present in the tree"
 
     nodes = [None] * len(tree)
 
@@ -266,7 +271,8 @@ def question4(tree, root, node1, node2):
     if bst.search(node1) and bst.search(node2):
         return bst.searchCommon(node1, node2)
     else:
-        return "Not found"
+        return None
+        # "Not found"
 
 
 def checkQuestion4():
@@ -333,18 +339,27 @@ class LinkedList(object):
             self.head = new_element
 
     def findFromEnd(self, position):
-        nodesList = []
+        nodesNum = 0
 
         current = self.head
 
         while current:
-            nodesList.append(current)
+            nodesNum += 1
             current = current.next
 
-        if position >= len(nodesList):
-            return "Should be smaller than the len of the LL"
+        current = self.head
 
-        return nodesList[-(position + 1)]
+        if position >= nodesNum:
+            return None
+            # "Should be smaller than the len of the LL"
+
+        position = nodesNum - position
+
+        while position > 1:
+            current = current.next
+            position -= 1
+
+        return current
 
 
 def checkQuestion5():
@@ -360,8 +375,8 @@ def checkQuestion5():
     print "Node from the end of a LinkedList: n from end \\ value"
     for case in range(len(cases)):
         out = ll.findFromEnd(cases[case])
-        if isinstance(out, str):
-            print out, "Should be:", answers[case]
+        if out is None:
+            print "Case:", case, out, "Should be:", answers[case]
         else:
             print "Case:", case, "\\", out.data, "Should be:", answers[case]
 

@@ -4,8 +4,8 @@ Question 1:
 					if letters of t are in s.
 
 	Efficiency:
-	* time: O(n) - length of the input string
-	* space: O(n) - space for dictionary
+	* time: O(nm) - length of the input string * length of the string to check (python internal algorithm)
+	* space: O(1) - space for search
 ---------------------
 
 Question 2:
@@ -41,9 +41,9 @@ Question 4:
 
 Question 5:
 
-	Data Structure: used list to store full path
+	Data Structure: none
 
 	Efficiency:
 	* time: O(n) to traverse whole tree
-	* space: O(n) to store all nodes
+	* space: O(1)
 ---------------------
