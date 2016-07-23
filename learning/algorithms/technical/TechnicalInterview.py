@@ -15,17 +15,33 @@ def question1(s, t):
         # "Strings should be of len > 0 or t < s"
         return None
 
-    if t in s:
-        return True
-    else:
-        return False
+    frequency = {}
+    for letter in t:
+        if letter in frequency:
+            frequency[letter] += 1
+        else:
+            frequency[letter] = 1
 
+    for iteration in range(len(s) - len(t) + 1):
+        if checkIn(frequency, s[iteration:len(t) + 1]):
+            return True
+
+    return False
+
+def checkIn(frequency, word):
+    for letter in word:
+        if letter in frequency and frequency[letter] > 0:
+            frequency[letter] -= 1
+        else:
+            return False
+
+    return True
 
 def checkQuestion1():
     s = ["udacity", 'udddda']
-    t = ["udatyci", "ud", "du", "ad", "da", "city", "ncity", "uda", "", None]
-    # answers for s[0]: F, T, F, F, T, T, F, T, None
-    # answers for s[1]: None, T, F, F, T, F, F, F, None
+    t = ["udatyci", "udcity", "ud", "du", "ad", "da", "city", "ncity", "uda", "", None]
+    # answers for s[0]: T, F, T, T, T, T, T, F, T, None, None
+    # answers for s[1]: None, F, T, T, T, T, F, F, F, None, None
 
     for word in s:
         print "Is substring of " + word + ": word \\ boolean"

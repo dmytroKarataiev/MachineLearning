@@ -1,14 +1,30 @@
 Question 1:
 
+    I think, this task can't be solved faster than in O(nm), because we need to compare at least once
+    each letter of a first string to each letter of a second string.
+
+    One of the fastest ways to check if letters of one word are in another is to use a hashmap, as it allows
+    insertion and checks in O(1). The biggest bottleneck of this algorithm is to create slices of a string to
+    check if they are in the hashmap with frequencies of another, which takes O(nm).
+
+    I use an additional function to check if a substring of a first string is in a second string, by passing
+    hashmap with letters and a substring.
+
 	Data Structure: used dictionary (hashmap) to calculate the frequency of letters and check in O(1)
 					if letters of t are in s.
 
 	Efficiency:
-	* time: O(nm) - length of the input string * length of the string to check (python internal algorithm)
-	* space: O(1) - space for search
+	* time: O(nm) - length of the input string * length of the string to check
+	* space: O(m) - space for a hashmap of a second string
 ---------------------
 
 Question 2:
+
+    We don't need data structures here as the task is pretty straightforward
+    (at least, I don't know how to do it faster).
+
+    We create all possible substrings of an input string and then check each substring vs its inverse,
+    if it's bigger than the current biggest - save it.
 
 	Data Structure: none, not sure how to use data structures here, the task is pretty straightforward,
 					some optimizations: stop checking strings of len < current biggest palindromic substring
@@ -23,6 +39,12 @@ Question 3:
 	I don't think this is a good question for an interview and I would be surprised if it ever was asked at a normal company.
 	Probably, there is a bruteforce algorithm in something like O(2^n) with which you can come up on the interview.
 
+	I've used Kruskal MST algorithm, which works like that:
+	1. Sort all the edges in non-decreasing order of their weight.
+    2. Pick the smallest edge. Check if it forms a cycle with the spanning tree formed so far.
+       If cycle is not formed, include this edge. Else, discard it.
+    3. Repeat step 2 until there are (V-1) edges in the spanning tree.
+
 	Data Structure: dictionary to store MST to be able quickly get them.
 
 	Efficiency:
@@ -32,6 +54,9 @@ Question 3:
 
 Question 4:
 
+    As it is a BST we know that is has a nice property of being sorted, so we save a path for each node.
+    Then we find the highest common value in both lists, which will be the lowest common ancestor.
+
 	Data Structure: two lists to store parents of nodes
 
 	Efficiency:
@@ -40,6 +65,9 @@ Question 4:
 ---------------------
 
 Question 5:
+
+    We traverse a LinkedList first time to understand its size,
+    then we calculate a position from the end (size - position) and traverse it once again.
 
 	Data Structure: none
 
