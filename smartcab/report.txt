@@ -1,0 +1,13 @@
+QUESTION: Observe what you see with the agent's behavior as it takes random actions. Does the smartcab eventually make it to the destination? Are there any other interesting observations to note?
+
+There aren't many observations to notice, except for the fact that the smartcab drives in circles.
+I've run the test 5 times for 1000 trials each and got the following results:
+
+Trials 		| Success | Ran Out of time | Hard Deadline
+1. 1000 		682 		475 			318
+2. 1000 		666 		460 			334
+3. 1000 		655 		474 			345
+4. 1000 		678 		476 			322
+5. 1000 		652 		426 			348
+
+Success rate if we don't enforce the deadline (<= 100 moves) - 66.66%, if we enforce the deadline it is 20.4%.

@@ -36,6 +36,12 @@ class Simulator(object):
         self.last_updated = 0.0
         self.update_delay = update_delay  # duration between each step (in secs)
 
+        ## Stat variables
+        self.trials = 0
+        self.success = 0
+        self.ranOutTime = 0
+        self.hardDeadline = 0
+
         self.display = display
         if self.display:
             try:
@@ -47,7 +53,7 @@ class Simulator(object):
                 self.agent_sprite_size = (32, 32)
                 self.agent_circle_radius = 10  # radius of circle, when using simple representation
                 for agent in self.env.agent_states:
-                    agent._sprite = self.pygame.transform.smoothscale(self.pygame.image.load(os.path.join("images", "car-{}.png".format(agent.color))), self.agent_sprite_size)
+                    agent._sprite = self.pygame.transform.smoothscale(self.pygame.image.load(os.path.join("../images", "car-{}.png".format(agent.color))), self.agent_sprite_size)
                     agent._sprite_size = (agent._sprite.get_width(), agent._sprite.get_height())
 
                 self.font = self.pygame.font.Font(None, 28)
@@ -61,9 +67,16 @@ class Simulator(object):
 
     def run(self, n_trials=1):
         self.quit = False
+
+        self.trials = 0
+        self.success = 0
+        self.ranOutTime = 0
+        self.hardDeadline = 0
+
         for trial in xrange(n_trials):
-            print "Simulator.run(): Trial {}".format(trial)  # [debug]
+            # print "Simulator.run(): Trial {}".format(trial)  # [debug]
             self.env.reset()
+
             self.current_time = 0.0
             self.last_updated = 0.0
             self.start_time = time.time()
@@ -100,10 +113,21 @@ class Simulator(object):
                     self.quit = True
                 finally:
                     if self.quit or self.env.done:
+                        self.trials += 1
+
+                        if self.env.reached == 1:
+                            self.success += 1
+
+                        if self.env.status == 1:
+                            self.ranOutTime += 1
+                        elif self.env.status == 2:
+                            self.hardDeadline += 1
+
                         break
 
             if self.quit:
                 break
+        print self.trials, self.success, self.ranOutTime, self.hardDeadline
 
     def render(self):
         # Clear screen

@@ -33,7 +33,10 @@ class Environment(object):
 
     def __init__(self, num_dummies=3):
         self.num_dummies = num_dummies  # no. of dummy agents
-        
+        # Stat variable -1 - None, 0 - reached, 1 - deadline, 2 - hard deadline
+        self.status = 0
+        self.reached = 0
+
         # Initialize simulation variables
         self.done = False
         self.t = 0
@@ -78,6 +81,9 @@ class Environment(object):
         self.done = False
         self.t = 0
 
+        self.status = 0
+        self.reached = 0
+
         # Reset traffic lights
         for traffic_light in self.intersections.itervalues():
             traffic_light.reset()
@@ -93,7 +99,7 @@ class Environment(object):
 
         start_heading = random.choice(self.valid_headings)
         deadline = self.compute_dist(start, destination) * 5
-        print "Environment.reset(): Trial set up with start = {}, destination = {}, deadline = {}".format(start, destination, deadline)
+        # print "Environment.reset(): Trial set up with start = {}, destination = {}, deadline = {}".format(start, destination, deadline)
 
         # Initialize agent(s)
         for agent in self.agent_states.iterkeys():
@@ -105,7 +111,7 @@ class Environment(object):
             agent.reset(destination=(destination if agent is self.primary_agent else None))
 
     def step(self):
-        #print "Environment.step(): t = {}".format(self.t)  # [debug]
+        # print "Environment.step(): t = {}".format(self.t)  # [debug]
 
         # Update traffic lights
         for intersection, traffic_light in self.intersections.iteritems():
@@ -122,10 +128,14 @@ class Environment(object):
             agent_deadline = self.agent_states[self.primary_agent]['deadline']
             if agent_deadline <= self.hard_time_limit:
                 self.done = True
-                print "Environment.step(): Primary agent hit hard time limit ({})! Trial aborted.".format(self.hard_time_limit)
+                self.status = 2
+                # print "Environment.step(): Primary agent hit hard time limit ({})! Trial aborted.".format(self.hard_time_limit)
             elif self.enforce_deadline and agent_deadline <= 0:
                 self.done = True
-                print "Environment.step(): Primary agent ran out of time! Trial aborted."
+                self.status = 1
+                # print "Environment.step(): Primary agent ran out of time! Trial aborted."
+            elif agent_deadline <= 0:
+                self.status = 1
             self.agent_states[self.primary_agent]['deadline'] = agent_deadline - 1
 
         self.t += 1
@@ -210,7 +220,8 @@ class Environment(object):
                 if state['deadline'] >= 0:
                     reward += 10  # bonus
                 self.done = True
-                print "Environment.act(): Primary agent has reached destination!"  # [debug]
+                self.reached = 1
+                # print "Environment.act(): Primary agent has reached destination!"  # [debug]
             self.status_text = "state: {}\naction: {}\nreward: {}".format(agent.get_state(), action, reward)
             #print "Environment.act() [POST]: location: {}, heading: {}, action: {}, reward: {}".format(location, heading, action, reward)  # [debug]
 
