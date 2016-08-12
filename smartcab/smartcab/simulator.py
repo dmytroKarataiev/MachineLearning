@@ -2,6 +2,7 @@ import os
 import time
 import random
 import importlib
+import numpy as np
 
 class Simulator(object):
     """Simulates agents in a dynamic smartcab environment.
@@ -127,7 +128,10 @@ class Simulator(object):
 
             if self.quit:
                 break
-        print self.trials, self.success, self.ranOutTime, self.hardDeadline
+
+        print (len(self.env.primary_agent.totalStepsSuccess) / 100.0), np.mean(self.env.primary_agent.totalStepsSuccess), \
+            np.mean(self.env.primary_agent.totalRewardsSuccess), np.mean(self.env.primary_agent.totalPenaltiesSuccess)
+        print "Trials {}, successfull {}, ran out of time {}, hard deadline {}".format(self.trials, self.success, self.ranOutTime, self.hardDeadline)
 
     def render(self):
         # Clear screen

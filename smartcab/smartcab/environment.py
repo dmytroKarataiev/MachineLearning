@@ -26,6 +26,9 @@ class TrafficLight(object):
 class Environment(object):
     """Environment within which all agents operate."""
 
+    def getActions(self):
+        return self.valid_actions
+
     valid_actions = [None, 'forward', 'left', 'right']
     valid_inputs = {'light': TrafficLight.valid_states, 'oncoming': valid_actions, 'left': valid_actions, 'right': valid_actions}
     valid_headings = [(1, 0), (0, -1), (-1, 0), (0, 1)]  # ENWS
