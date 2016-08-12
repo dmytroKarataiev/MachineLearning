@@ -129,8 +129,8 @@ class Simulator(object):
             if self.quit:
                 break
 
-        print (len(self.env.primary_agent.totalStepsSuccess) / 100.0), np.mean(self.env.primary_agent.totalStepsSuccess), \
-            np.mean(self.env.primary_agent.totalRewardsSuccess), np.mean(self.env.primary_agent.totalPenaltiesSuccess)
+        print "Success rate:", (len(self.env.primary_agent.totalStepsSuccess) / 100.0), "Steps to reach:", np.mean(self.env.primary_agent.totalStepsSuccess), \
+            "Rewards:", np.mean(self.env.primary_agent.totalRewardsSuccess), "Penalties:", np.mean(self.env.primary_agent.totalPenaltiesSuccess)
         print "Trials {}, successfull {}, ran out of time {}, hard deadline {}".format(self.trials, self.success, self.ranOutTime, self.hardDeadline)
 
     def render(self):

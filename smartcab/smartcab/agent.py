@@ -8,7 +8,7 @@ from collections import defaultdict
 class LearningAgent(Agent):
     """An agent that learns to drive in the smartcab world."""
 
-    def __init__(self, env, alphaBetaGamma=(0.8, 0.5, 0.1)):
+    def __init__(self, env, alphaBetaGamma=(0.8, 0.1, 0.005)):
         super(LearningAgent, self).__init__(env)  # sets self.env = env, state = None, next_waypoint = None, and a default color
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
@@ -30,6 +30,7 @@ class LearningAgent(Agent):
         # initial Q values 1 for each action
         self.Q = defaultdict(self.getDefaultQvalues)
 
+        # stats variables, used in simulator
         self.totalPenaltiesSuccess = []
         self.totalRewardsSuccess = []
         self.totalStepsSuccess = []
@@ -72,6 +73,7 @@ class LearningAgent(Agent):
         self.reward += reward
 
         # print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
+        # variables used outside of the class to gather stats in the simulator class
         if self.planner.next_waypoint() == None:
             self.totalRewardsSuccess.append(self.reward)
             self.totalPenaltiesSuccess.append(self.penalty)
