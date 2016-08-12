@@ -25,7 +25,7 @@ class LearningAgent(Agent):
 
         # exploration rate epsilon
         self.epsilon = alphaBetaGamma[2]
-        print "Alpha {}, Gamma {}, Epsilon {}".format(self.alpha, self.gamma, self.epsilon)
+        #print "Alpha {}, Gamma {}, Epsilon {}".format(self.alpha, self.gamma, self.epsilon)
 
         # initial Q values 1 for each action
         self.Q = defaultdict(self.getDefaultQvalues)
@@ -40,7 +40,7 @@ class LearningAgent(Agent):
 
     def getDefaultQvalues(self):
         Q = {}
-        for action in self.env.getActions():
+        for action in Environment.valid_actions:
             Q[action] = 1
         return Q
 
@@ -72,9 +72,10 @@ class LearningAgent(Agent):
         self.learn(t, action, reward)
         self.reward += reward
 
-        # print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}".format(deadline, inputs, action, reward)  # [debug]
+        #print "LearningAgent.update(): deadline = {}, inputs = {}, action = {}, reward = {}, next waypoint = {}".format(deadline, inputs, action, reward, self.planner.next_waypoint())  # [debug]
         # variables used outside of the class to gather stats in the simulator class
         if self.planner.next_waypoint() == None:
+            #print self.Q
             self.totalRewardsSuccess.append(self.reward)
             self.totalPenaltiesSuccess.append(self.penalty)
             self.totalStepsSuccess.append(t + 1)
@@ -132,20 +133,21 @@ def run():
         # NOTE: You can set enforce_deadline=False while debugging to allow longer trials
 
         # Now simulate it
-        sim = Simulator(e, update_delay=0.000001, display=False)  # create simulator (uses pygame when display=True, if available)
+        sim = Simulator(e, update_delay=0.0000001, display=False)  # create simulator (uses pygame when display=True, if available)
         # NOTE: To speed up simulation, reduce update_delay and/or set display=False
         sim.run(n_trials=100)  # run for a specified number of trials
         # NOTE: To quit midway, press Esc or close pygame window, or hit Ctrl+C on the command-line
 
-    alphas = [0.8]
-    gammas = [0.1]
-    epsilons = [0.005]
+    #alphas = [1, 0.8, 0.6, 0.3, 0.1]
+    #gammas = [0.5, 0.3, 0.1]
+    #epsilons = [0.2, 0.1, 0.05, 0.01, 0.005]
 
     # A lot of work :)
-    for alpha in alphas:
-        for gamma in gammas:
-            for epsilon in epsilons:
-                runWithParams(alpha, gamma, epsilon)
+    #for alpha in alphas:
+    #    for gamma in gammas:
+    #        for epsilon in epsilons:
+    #            runWithParams(alpha, gamma, epsilon)
+    runWithParams(0.8, 0.1, 0.005)
 
 if __name__ == '__main__':
     run()
