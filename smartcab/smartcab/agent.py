@@ -4,6 +4,7 @@ from planner import RoutePlanner
 from simulator import Simulator
 import operator
 from collections import defaultdict
+import math
 
 class LearningAgent(Agent):
     """An agent that learns to drive in the smartcab world."""

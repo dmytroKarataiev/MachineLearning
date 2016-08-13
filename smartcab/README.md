@@ -18,3 +18,9 @@ In a terminal or command window, navigate to the top-level project directory `sm
 ```python -m smartcab.agent```
 
 This will run the `agent.py` file and execute your agent code.
+
+## Final Report
+- [Final report](smartcab/report.pdf)
+- [Review 1](review_1.pdf)
+- [Review 2](review_2.pdf)
+- [Review 3](review_3.pdf)
